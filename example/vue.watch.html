@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Watch 选项 监控数据 </title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="render" content="webkit">
+    <script type="text/javascript" src="./../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Watch 选项 监控数据</h1>
+<hr>
+<div id="app">
+    <p>今日温度：{{temperature}}°C</p>
+    <p>穿衣建议:{{message}}</p>
+    <p>
+        <button @click="add">添加温度</button>
+        <button @click="sub">减少温度</button>
+    </p>
+</div>
+</body>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            temperature:12,
+            message:"夹克长裙"
+        },
+        methods:{
+            add(){
+                this.temperature++
+            },
+            sub(){
+                this.temperature--
+            }
+        }
+    });
+    app.$watch('temperature',function (newVal,oldVal) {
+        if(newVal>=26){
+            app.$data.message="裸奔";
+        }else if(newVal<26 && newVal >=0)
+        {
+            app.$data.message="夹克长裙";
+        }else{
+            app.$data.message="棉衣棉裤";
+        }
+
+    })
+</script>
+</html>
