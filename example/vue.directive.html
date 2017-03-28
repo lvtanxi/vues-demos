@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义标签实例 </title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="render" content="webkit">
+    <script type="text/javascript" src="./../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>自定义标签实例</h1>
+<hr>
+<div id="app">
+    <div v-jspang="color">{{num}}</div>
+    <p>
+        <button @click="add">添加</button>
+    </p>
+</div>
+<p>
+    <button onclick="unbindClick()">解绑</button>
+</p>
+</body>
+<script type="text/javascript">
+    function bind(el,binding) {//被绑定
+        el.style.color = binding.value;
+        console.log('1 - bind');
+    }
+    function inserted() {//绑定到节点
+        console.log('2 - inserted');
+    }
+    function update() {//组件更新
+        console.log('3 - update');
+    }
+    function componentUpdated() {//组件更新完成
+        console.log('4 - componentUpdated');
+    }
+    function unbind() {//解绑
+        console.log('1 - bind');
+    }
+    Vue.directive("jspang",{bind,inserted,update,componentUpdated,unbind});
+    var app=new Vue({
+        el: "#app",
+        data: {
+            num: 10,
+            color: 'red'
+        },
+        methods: {
+            add(){
+                this.num++
+            }
+        }
+    });
+    
+    function unbindClick() {
+        app.$destroy();
+    }
+</script>
+</html>

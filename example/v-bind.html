@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind绑定标签属性实例 </title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="render" content="webkit">
+    <script type="text/javascript" src="./../assets/js/vue.js"></script>
+    <style type="text/css">
+        .classA {
+            color: red;
+        }
+
+        .classB {
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+<h1>v-bind绑定标签属性实例</h1>
+<hr>
+<div id="app">
+    <img :src="imgSrc"/>
+    <a v-bind:href="webUrl" target="_blank">跳转</a>
+    <hr>
+    <div :class="className">
+        1.绑定Class
+    </div>
+    <div :class="{classA:isOk}">
+        2.绑定Class中的判断
+
+    </div>
+    <div :class="[classA,classB]">
+        3.绑定多个Class
+    </div>
+    <div :class="isOk?classA:classB">
+        4.三目运算绑定Class
+    </div>
+    <div :style="{color:red,fontSize:font}">
+        5.绑定style
+    </div>
+    <div :style="styleObject">
+        5.绑定对象style
+    </div>
+    <hr>
+    <div>
+        <label>
+            <input type="checkbox" v-model="isOk">
+        </label>
+        <span>{{isOk}}</span>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            imgSrc: 'http://ibr7.bdstatic.com/odin/201609/f7e778b00b2bb39bb0464fe20d8d44fb.jpg',
+            webUrl: 'http://www.baidu.com',
+            className: 'classA',
+            classA: 'classA',
+            classB: 'classB',
+            isOk: false,
+            red:"red",
+            font:"20px",
+            styleObject:{
+                color:'green',
+                fontSize:'24px'
+            }
+        }
+    })
+</script>
+</html>

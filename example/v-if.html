@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if&v-else&v-show</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="render" content="webkit">
+    <script type="text/javascript" src="./../assets/js/vue.js"></script>
+</head>
+<body id="app">
+<h1>v-if&v-else&v-show</h1>
+<hr>
+<div >
+    <div v-if="isLogin">你好， 吕檀溪，this is v-if </div>
+    <div v-show="isLogin">你好， 吕檀溪，this is v-show</div>
+    <div v-else="isLogin">您还没有登录呢</div>
+</div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            isLogin: false
+        }
+    })
+</script>
+</html>

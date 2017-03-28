@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.set全局操作 实例 </title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="render" content="webkit">
+    <script type="text/javascript" src="./../assets/js/vue.js"></script>
+<body>
+<h1>Vue.set全局操作 实例</h1>
+<hr>
+<author></author>
+</body>
+<script type="text/javascript">
+    var authorExtend = Vue.extend({
+        template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+        data:function(){
+            return{
+                authorName:'JSPang',
+                authorUrl:'http://www.jspang.com'
+            }
+        }
+    });
+    //支持class id 等绑定
+    new authorExtend().$mount('author');
+</script>
+</html>

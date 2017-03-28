@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.extend构造器的延伸 </title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="render" content="webkit">
+    <script type="text/javascript" src="./../assets/js/vue.js"></script>
+<body>
+<h1>Vue.extend构造器的延伸</h1>
+<hr>
+<div id="app">
+    <span v-text="count"></span>
+    <ul>
+        <li v-for="item in arr">
+            <span v-text="item"></span>
+        </li>
+    </ul>
+</div>
+<p>
+    <button onclick="add()">add</button>
+</p>
+</body>
+<script type="text/javascript">
+    var  outData={
+        count:1,
+        goods:'car ',
+        arr:['aaa','bbb','ccc']
+    };
+    var app = new Vue({
+        el:"#app",
+        data:outData
+    });
+    function add() {
+       //1. Vue.set(outData,'count',10)
+       //2. app.count++
+        //3. outData.count++
+
+       /* outData.count++;*/
+        //outData. arr[1]='dddd' 这种方式不能改变数组的值
+        Vue.set(app.arr,1,'dddd')
+    }
+</script>
+</html>
