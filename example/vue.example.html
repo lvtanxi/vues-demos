@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>$mount方法 </title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="render" content="webkit">
+    <script type="text/javascript" src="./../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>$mount方法</h1>
+<hr>
+<div id="app">
+
+</div>
+<p><button onclick="destroy()">销毁</button></p>
+<p><button onclick="reLoad()">刷新</button></p>
+<p><button onclick="nextTick()">数据被修改</button></p>
+</body>
+<script type="text/javascript">
+    var jspang=Vue.extend({
+        template:`<p>{{message}}</p>`,
+        data(){
+            return{
+                message:"Hello, I am Jspang"
+            }
+        },
+        mounted(){
+            console.log("this is jspang mounted");
+        },
+        updated(){
+            console.log("this is jspang updated");
+        },
+        destroyed(){
+            console.log("this is jspang destroyed");
+        }
+    });
+    var vm=new jspang().$mount("#app")
+
+    function destroy() {
+        vm.$destroy()
+    }
+    function reLoad() {
+        vm.$forceUpdate()
+    }
+    function nextTick() {
+        vm.message="hahahh"
+        vm.$nextTick(()=>{
+            console.log("this is $nextTick");
+        })
+    }
+</script>
+</html>
